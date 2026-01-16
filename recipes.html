@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="sr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <title>Moji recepti | Mind&Body Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-emerald-50 via-sky-50 to-yellow-50 text-gray-800">
+
+<nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <h1 class="text-2xl font-extrabold text-emerald-600">Mind&Body Hub</h1>
+    <div class="space-x-6 font-medium">
+      <a href="index.html" class="hover:text-emerald-600 transition">Home</a>
+      <a href="mental.html" class="hover:text-emerald-600 transition">Mental Test</a>
+      <a href="fitness.html" class="hover:text-emerald-600 transition">Fitness & Nutrition</a>
+      <a href="recipes.html" class="text-emerald-600 font-semibold">Moji recepti</a>
+    </div>
+  </div>
+</nav>
+
+<header class="text-center py-10 px-4 sm:px-6">
+  <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-700">
+    Upravljaj svojim receptima
+  </h1>
+  <p class="text-gray-600 mt-2 text-sm sm:text-base">
+    Dodaj, izmeni ili obriši recepte i prati svoju ishranu
+  </p>
+</header>
+
+<section class="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-6 mb-10">
+  <h2 class="text-2xl font-bold mb-4 text-emerald-600">Dodaj novi recept</h2>
+  <form id="recipeForm" class="grid grid-cols-1 gap-4">
+
+    <div>
+      <label class="font-medium">Naziv recepta *</label>
+      <input type="text" id="name" class="w-full p-2 border rounded focus:ring-2 focus:ring-emerald-400" required>
+    </div>
+
+    <div>
+      <label class="font-medium">Opis *</label>
+      <textarea id="description" rows="3" class="w-full p-2 border rounded focus:ring-2 focus:ring-emerald-400" required></textarea>
+    </div>
+
+    <div>
+      <label class="font-medium">Tip obroka *</label>
+      <div class="flex gap-4 mt-2">
+        <label><input type="radio" name="type" value="Doručak" required> Doručak</label>
+        <label><input type="radio" name="type" value="Ručak"> Ručak</label>
+        <label><input type="radio" name="type" value="Užina"> Užina</label>
+        <label><input type="radio" name="type" value="Večera"> Večera</label>
+      </div>
+    </div>
+
+    <div>
+      <label class="font-medium">Kategorija</label>
+      <select id="category" class="w-full p-2 border rounded focus:ring-2 focus:ring-emerald-400">
+        <option value="Proteinski">Proteinski</option>
+        <option value="Vegetarijanski">Vegetarijanski</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Brzi recepti">Brzi recepti</option>
+      </select>
+    </div>
+
+    <div class="flex gap-4">
+      <label class="flex items-center gap-2"><input type="checkbox" id="glutenFree"> Bez glutena</label>
+      <label class="flex items-center gap-2"><input type="checkbox" id="dairyFree"> Bez mlečnih proizvoda</label>
+    </div>
+
+    <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
+      Dodaj recept
+    </button>
+  </form>
+</section>
+
+<section class="max-w-5xl mx-auto mb-20">
+  <h2 class="text-2xl font-bold mb-4 text-emerald-600">Tvoji recepti</h2>
+  <div id="recipesList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  </div>
+</section>
+
+<script>
+let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+
+const recipeForm = document.getElementById('recipeForm');
+const recipesList = document.getElementById('recipesList');
+
+function renderRecipes() {
+  recipesList.innerHTML = '';
+  if (recipes.length === 0) {
+    recipesList.innerHTML = '<p class="text-gray-500 col-span-full">Još nema recepata. Dodaj prvi!</p>';
+    return;
+  }
+
+  recipes.forEach((r, index) => {
+    const div = document.createElement('div');
+    div.className = 'bg-white rounded-2xl shadow p-4 flex flex-col justify-between';
+    div.innerHTML = `
+      <div>
+        <h3 class="font-bold text-lg text-emerald-600 mb-1">${r.name}</h3>
+        <p class="text-gray-700 mb-1">${r.description}</p>
+        <p class="text-sm text-gray-500">Tip: ${r.type}, Kategorija: ${r.category}</p>
+        <p class="text-sm text-gray-500">${r.glutenFree ? 'Bez glutena' : ''} ${r.dairyFree ? 'Bez mlečnih proizvoda' : ''}</p>
+      </div>
+      <div class="mt-2 flex gap-2">
+        <button onclick="editRecipe(${index})" class="px-2 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500">Izmeni</button>
+        <button onclick="deleteRecipe(${index})" class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600">Obriši</button>
+      </div>
+    `;
+    recipesList.appendChild(div);
+  });
+}
+
+function saveRecipes() {
+  localStorage.setItem('recipes', JSON.stringify(recipes));
+}
+
+let editIndex = null;
+
+recipeForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const description = document.getElementById('description').value.trim();
+  const type = document.querySelector('input[name="type"]:checked')?.value;
+  const category = document.getElementById('category').value;
+  const glutenFree = document.getElementById('glutenFree').checked;
+  const dairyFree = document.getElementById('dairyFree').checked;
+
+  if (!name || !description || !type) {
+    alert('Molimo popuni sva obavezna polja (Naziv, Opis, Tip obroka)');
+    return;
+  }
+
+  const recipeData = { name, description, type, category, glutenFree, dairyFree };
+
+  if (editIndex !== null) {
+    recipes[editIndex] = recipeData;
+    editIndex = null;
+  } else {
+    recipes.push(recipeData);
+  }
+
+  saveRecipes();
+  renderRecipes();
+  recipeForm.reset();
+});
+
+function editRecipe(index) {
+  const r = recipes[index];
+  document.getElementById('name').value = r.name;
+  document.getElementById('description').value = r.description;
+  document.querySelector(`input[name="type"][value="${r.type}"]`).checked = true;
+  document.getElementById('category').value = r.category;
+  document.getElementById('glutenFree').checked = r.glutenFree;
+  document.getElementById('dairyFree').checked = r.dairyFree;
+  editIndex = index;
+}
+
+function deleteRecipe(index) {
+  if (confirm('Da li si siguran da želiš da obrišeš recept?')) {
+    recipes.splice(index, 1);
+    saveRecipes();
+    renderRecipes();
+  }
+}
+
+renderRecipes();
+</script>
+
+</body>
+</html>
