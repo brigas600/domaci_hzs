@@ -8,15 +8,26 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-<nav class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-    <h1 class="text-xl font-bold text-green-600">Mind&Body Hub</h1>
-    <div class="space-x-6 text-gray-600">
-      <a href="index.html" class="hover:text-green-600">Home</a>
-      <a href="mental.html" class="text-green-600 font-semibold">Mental Test</a>
-      <a href="fitness.html" class="hover:text-green-600">Fitness & Nutrition</a>
-      <a href="recipes.html" class="hover:text-green-600">Recipes</a>
+    <h1 class="text-2xl font-extrabold text-emerald-600">Mind&Body Hub</h1>
+    <div class="hidden md:flex space-x-6 font-medium" id="nav-links">
+      <a href="index.html" class="hover:text-emerald-600 transition">Home</a>
+      <a href="mental.html" class="hover:text-emerald-600 transition">Mental Test</a>
+      <a href="fitness.html" class="hover:text-emerald-600 transition">Fitness & Nutrition</a>
+      <a href="recipes.html" class="hover:text-green-600 transition">Recipes</a>
     </div>
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5">
+      <span class="block w-6 h-0.5 bg-gray-700"></span>
+      <span class="block w-6 h-0.5 bg-gray-700"></span>
+      <span class="block w-6 h-0.5 bg-gray-700"></span>
+    </button>
+  </div>
+  <div class="hidden md:hidden bg-white/95 backdrop-blur-md shadow-md flex flex-col space-y-2 p-4" id="mobile-menu">
+    <a href="index.html" class="hover:text-emerald-600 transition">Home</a>
+    <a href="mental.html" class="hover:text-emerald-600 transition">Mental Test</a>
+    <a href="fitness.html" class="hover:text-emerald-600 transition">Fitness & Nutrition</a>
+    <a href="recipes.html" class="hover:text-green-600 transition">Recipes</a>
   </div>
 </nav>
 
@@ -180,6 +191,13 @@ document.getElementById("mentalForm").addEventListener("submit", function(e){
   result.textContent = text;
 });
 </script>
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
 
+  hamburger.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
 </body>
 </html>
