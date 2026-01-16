@@ -2,95 +2,176 @@
 <html lang="sr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fitness & Nutrition | Mind&Body Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-emerald-50 via-sky-50 to-purple-50 text-gray-800">
+
+<body class="bg-gradient-to-br from-emerald-50 via-sky-50 to-yellow-50 text-gray-800">
 <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
     <h1 class="text-2xl font-extrabold text-emerald-600">Mind&Body Hub</h1>
     <div class="space-x-6 font-medium">
-      <a href="index.html" class="hover:text-emerald-600 transition">Home</a>
-      <a href="mental.html" class="hover:text-emerald-600 transition">Mental Test</a>
+      <a href="index.html" class="hover:text-emerald-600">Home</a>
+      <a href="mental.html" class="hover:text-emerald-600">Mental Test</a>
       <a href="fitness.html" class="text-emerald-600 font-semibold">Fitness & Nutrition</a>
     </div>
   </div>
 </nav>
 
-<section class="py-20 text-center">
-  <h2 class="text-4xl font-extrabold mb-4">
-    Ojačaj telo, nahrani energiju
-  </h2>
-  <p class="max-w-2xl mx-auto text-gray-700 text-lg">
-    Ovde ćeš pronaći vežbe, savete za ishranu i edukativne sadržaje koji će ti pomoći
-    da izgradiš zdravu rutinu i osećaš se snažno i fokusirano.
-  </p>
+<section class="relative h-[70vh] flex items-center justify-center text-center">
+  <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+       class="absolute inset-0 w-full h-full object-cover opacity-25">
+  <div class="relative z-10 max-w-3xl">
+    <h2 class="text-5xl font-extrabold mb-6 text-emerald-700 drop-shadow">
+      Izgradi snagu. Hrani energiju.
+    </h2>
+    <p class="text-lg text-gray-700">
+      Profesionalni pristup treningu i ishrani za savršen balans tela i uma.
+    </p>
+  </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-6 pb-20">
-  <h3 class="text-3xl font-bold mb-10 text-center">Šta želiš danas?</h3>
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <h3 class="text-3xl font-bold text-center mb-12">Vrste treninga</h3>
+
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <a href="snaga.html"
+       class="bg-white rounded-2xl shadow-xl hover:shadow-emerald-200 hover:-translate-y-2 transition p-6 block">
+      <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1170&auto=format&fit=crop"
+           class="w-full h-48 object-cover rounded-xl mb-4">
+      <h4 class="text-xl font-bold mb-2 text-emerald-600">Snaga</h4>
+      <p class="text-gray-600">Izgradnja mišića, stabilnosti i samopouzdanja.</p>
+    </a>
 
-    <div class="bg-white rounded-2xl shadow-xl p-6 hover:-translate-y-2 hover:shadow-2xl transition">
-      <div class="text-4xl mb-4"></div>
-      <h4 class="text-xl font-bold mb-2">Vežbe za snagu</h4>
-      <p class="text-gray-600 mb-4">
-        Programi treninga za jačanje mišića, poboljšanje kondicije i samopouzdanja.
-      </p>
-      <button class="text-emerald-600 font-semibold hover:underline">
-        Pogledaj treninge →
-      </button>
-    </div>
+    <a href="fleksibilnost.html" target="_blank"
+       class="bg-white rounded-2xl shadow-xl hover:shadow-sky-200 hover:-translate-y-2 transition p-6 block">
+      <img src="https://images.unsplash.com/photo-1701824429192-74ad7c2246f0?q=80&w=1633&auto=format&fit=crop"
+           class="w-full h-48 object-cover rounded-xl mb-4">
+      <h4 class="text-xl font-bold mb-2 text-sky-600">Fleksibilnost</h4>
+      <p class="text-gray-600">Oporavak, mobilnost i smanjenje stresa.</p>
+    </a>
 
-    <div class="bg-white rounded-2xl shadow-xl p-6 hover:-translate-y-2 hover:shadow-2xl transition">
-      <div class="text-4xl mb-4"></div>
-      <h4 class="text-xl font-bold mb-2">Fleksibilnost & oporavak</h4>
-      <p class="text-gray-600 mb-4">
-        Istezanja, lagane vežbe i rutine za oporavak tela i smanjenje napetosti.
-      </p>
-      <button class="text-emerald-600 font-semibold hover:underline">
-        Otkrij vežbe →
-      </button>
-    </div>
-
-    <div class="bg-white rounded-2xl shadow-xl p-6 hover:-translate-y-2 hover:shadow-2xl transition">
-      <div class="text-4xl mb-4"></div>
-      <h4 class="text-xl font-bold mb-2">Ishrana & energija</h4>
-      <p class="text-gray-600 mb-4">
-        Saveti za balansiranu ishranu, zdravi obroci i recepti puni energije.
-      </p>
-      <button class="text-emerald-600 font-semibold hover:underline">
-        Pogledaj ishranu →
-      </button>
-    </div>
+    <a href="kardio.html" target="_blank"
+       class="bg-white rounded-2xl shadow-xl hover:shadow-yellow-200 hover:-translate-y-2 transition p-6 block">
+      <img src="https://images.unsplash.com/photo-1737736193172-f3b87a760ad5?q=80&w=765&auto=format&fit=crop"
+           class="w-full h-48 object-cover rounded-xl mb-4">
+      <h4 class="text-xl font-bold mb-2 text-yellow-600">Kardio</h4>
+      <p class="text-gray-600">Izdržljivost, energija i zdravlje srca.</p>
+    </a>
 
   </div>
 </section>
 
-<section class="bg-white py-20">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 items-center">
-    
-    <div>
-      <h3 class="text-3xl font-bold mb-4">Zašto je fizičko zdravlje važno?</h3>
-      <p class="text-gray-700 mb-4">
-        Redovna fizička aktivnost i pravilna ishrana direktno utiču na tvoje raspoloženje,
-        koncentraciju i energiju. Briga o telu je temelj mentalnog balansa.
-      </p>
-      <p class="text-gray-700">
-        Mind&Body Hub te podseća da fizička snaga i mentalna stabilnost idu ruku pod ruku.
-      </p>
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <h3 class="text-3xl font-bold text-center mb-12">Ishrana & Energija</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+      <img src="https://images.unsplash.com/photo-1627308594190-a057cd4bfac8?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-48 object-cover rounded-xl mb-4">
+      <h4 class="font-bold text-lg">Zdrav doručak</h4>
+      <p class="text-gray-600">Proteini + vlakna = energija bez naglog pada.</p>
+      <button 
+    onclick="openRecipe('breakfast')" 
+    class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
+    Pogledaj recept
+  </button>
     </div>
 
-    <div class="bg-emerald-100 rounded-2xl p-8 text-center shadow-inner">
-      <p class="text-xl font-semibold mb-2"> Dnevni savet</p>
-      <p class="text-gray-700">
-        Popij čašu vode čim se probudiš i uradi 5 minuta istezanja – male navike prave ogromnu razliku.
-      </p>
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+      <img src="https://images.unsplash.com/photo-1631311309788-9a37722d05f6?q=80&w=704&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-48 object-cover rounded-xl mb-4">
+      <h4 class="font-bold text-lg">Lagani ručak</h4>
+      <p class="text-gray-600">Održava fokus i stabilan nivo energije.</p>
+      <button 
+    onclick="openRecipe('lunch')" 
+    class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
+    Pogledaj recept
+  </button>
     </div>
 
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+      <img src="https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-48 object-cover rounded-xl mb-4">
+      <h4 class="font-bold text-lg">Recovery snack</h4>
+      <p class="text-gray-600">Oporavak mišića i hidratacija.</p>
+      <button 
+    onclick="openRecipe('snack')" 
+    class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
+    Pogledaj recept
+  </button>
+    </div>
   </div>
 </section>
+
+<section class="bg-gradient-to-r from-emerald-100 to-sky-100 py-16 text-center">
+  <h3 class="text-2xl font-bold mb-2">„Telo postiže ono u šta um veruje.“</h3>
+  <p class="text-gray-600">Doslednost > Motivacija</p>
+</section>
+<div id="recipeModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl max-w-lg w-full p-6 relative">
+    <button onclick="closeRecipe()" class="absolute top-3 right-4 text-xl font-bold">&times;</button>
+    <h3 id="recipeTitle" class="text-2xl font-bold mb-4"></h3>
+    <p id="recipeText" class="text-gray-700 leading-relaxed"></p>
+  </div>
+</div>
 
 </body>
+<script>
+const recipes = {
+  breakfast: {
+    title: "Zdrav doručak – proteinska ovsena kaša",
+    text: `
+Sastojci:
+- 50g ovsenih pahuljica  
+- 1 banana  
+- 1 kašika kikiriki putera  
+- 200ml mleka ili biljnog mleka  
+- 1 merica proteina (opciono)
+
+Priprema:
+Skuvaj ovsene pahuljice u mleku 5 minuta. Dodaj iseckanu bananu,
+kikiriki puter i protein. Promešaj i spremno za energičan početak dana.
+`
+  },
+  lunch: {
+    title: "Lagani ručak – piletina sa kinoom",
+    text: `
+Sastojci:
+- 150g grilovane piletine  
+- 80g kinoe  
+- Povrće (brokoli, šargarepa, paprika)  
+- Maslinovo ulje, so, biber
+
+Priprema:
+Skuvaj kinoju, piletinu ispeci na tiganju. Pomešaj sa povrćem i začinima.
+Savršeno za energiju bez težine u stomaku.
+`
+  },
+  snack: {
+    title: "Recovery snack – proteinski smoothie",
+    text: `
+Sastojci:
+- 1 banana  
+- Šaka bobičastog voća  
+- 1 merica proteina  
+- 250ml bademovog mleka  
+
+Priprema:
+Ubaci sve u blender i miksaj 30 sekundi. Idealno posle treninga.
+`
+  }
+};
+
+function openRecipe(type) {
+  document.getElementById("recipeTitle").innerText = recipes[type].title;
+  document.getElementById("recipeText").innerText = recipes[type].text;
+  document.getElementById("recipeModal").classList.remove("hidden");
+  document.getElementById("recipeModal").classList.add("flex");
+}
+
+function closeRecipe() {
+  document.getElementById("recipeModal").classList.add("hidden");
+  document.getElementById("recipeModal").classList.remove("flex");
+}
+</script>
+
 </html>
